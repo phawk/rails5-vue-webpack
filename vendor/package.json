@@ -1,0 +1,27 @@
+{
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-latest": "^6.22.0",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.12.3",
+    "glob": "^7.1.1",
+    "path-complete-extname": "^0.1.0",
+    "rails-erb-loader": "^3.2.0",
+    "webpack": "beta",
+    "webpack-dev-server": "beta",
+    "webpack-merge": "^2.6.1"
+  },
+  "dependencies": {
+    "css-loader": "^0.26.1",
+    "dotenv": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "underscore": "^1.8.3",
+    "underscore.string": "^3.3.4",
+    "vue": "^2.1.10",
+    "vue-html-loader": "^1.2.3",
+    "vue-loader": "^10.3.0",
+    "vue-resource": "^1.2.0",
+    "vue-template-compiler": "^2.1.10"
+  }
+}
