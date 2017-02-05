@@ -17,6 +17,8 @@ module.exports = {
 
   module: {
     rules: [
+      { test: /\.vue$/, loader: 'vue-loader' },
+      { test: /\.html$/, loader: 'vue-html-loader' },
       { test: /\.coffee(.erb)?$/, loader: "coffee-loader" },
       {
         test: /\.js(.erb)?$/,
@@ -43,11 +45,17 @@ module.exports = {
   plugins: [],
 
   resolve: {
-    extensions: [ '.js', '.coffee' ],
+    extensions: [ '.js', '.coffee', '.html' ],
     modules: [
       path.resolve('../app/javascript'),
       path.resolve('../vendor/node_modules')
-    ]
+    ],
+    alias: {
+      'components': path.resolve(__dirname, '../../app/javascript/components'),
+      'helpers': path.resolve(__dirname, '../../app/javascript/helpers'),
+      'vue$': 'vue/dist/vue.common.js',
+      'resources$': path.resolve(__dirname, '../../app/javascript/helpers/resources.js'),
+    }
   },
 
   resolveLoader: {
