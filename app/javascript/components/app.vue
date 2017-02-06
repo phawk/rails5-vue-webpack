@@ -45,6 +45,15 @@ module.exports = Vue.extend({
       });
     });
 
+    bus.$on("contact-updated", (contact) => {
+      var found = _.find(this.contacts, { id: contact.id });
+      if (!found) return;
+
+      _.extend(found, contact);
+
+      this.sortContacts();
+    });
+
     bus.$on("contact-deleted", (contact) => {
       var found = _.find(this.contacts, { id: contact.id });
       if (!found) return;
