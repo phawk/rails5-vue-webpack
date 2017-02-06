@@ -1,19 +1,19 @@
 <template>
   <div>
     <div class="main-header">
-      <h1>Contacts</h1>
       <ul class="nav">
         <li>
           <router-link to="/contacts/new">+ Create new</router-link>
         </li>
       </ul>
+      <h1>Contacts</h1>
     </div>
 
     <div class="sidebar">
       <contacts-list :contacts="contacts"></contacts-list>
     </div>
 
-    <router-view></router-view>
+    <router-view class="container"></router-view>
   </div>
 </template>
 
@@ -99,4 +99,39 @@ body {
   }
 }
 
+.sidebar {
+  float: left;
+  width: 300px;
+  border-right: solid 1px #d7d7d7;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    & > li {
+      padding: 0;
+      &.header {
+        padding: 10px 20px;
+      }
+      border-bottom: solid 1px #efefef;
+
+      a {
+        display: block;
+        padding: 20px;
+        text-decoration: none;
+        color: #212121;
+
+        &:hover {
+          background-color: #f9f9f9;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  margin-left: 301px;
+  padding: 30px;
+}
 </style>
