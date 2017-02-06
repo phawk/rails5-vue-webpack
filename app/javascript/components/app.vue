@@ -19,12 +19,11 @@
 
 <script>
 const _ = require("underscore");
-const Vue = require("vue");
 const ContactsList = require("components/contacts-list.vue");
 const api = require("helpers/api");
 const bus = require("helpers/bus");
 
-module.exports = Vue.extend({
+module.exports = {
   components: {
     ContactsList
   },
@@ -72,10 +71,15 @@ module.exports = Vue.extend({
       this.contacts = _.sortBy(this.contacts, function(contact) { return contact.last_name; });
     },
   },
-});
+};
 </script>
 
 <style>
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
 body {
   $font-stack: -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
@@ -83,26 +87,43 @@ body {
 
   margin: 0;
   font-family: $font-stack;
+  position: relative;
 }
 
 .main-header {
   background-color: #f9f9f9;
   border-bottom: solid 1px #d7d7d7;
-  padding: 20px 30px;
+  padding: 15px 30px;
 
   h1 {
     font-size: 1em;
+    margin: 0;
   }
   .nav {
     float: right;
     text-align: right;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    &>li {
+      display: inline-block;
+      margin-left: 15px;
+    }
+
+    a {
+      text-decoration: none;
+    }
   }
 }
 
 .sidebar {
-  float: left;
+  top: 49px;
+  left: 0;
+  bottom: 0;
+  position: absolute;
   width: 300px;
   border-right: solid 1px #d7d7d7;
+  overflow-y: auto;
 
   ul {
     list-style: none;

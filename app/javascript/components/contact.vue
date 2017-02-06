@@ -1,29 +1,65 @@
+<style scope>
+table {
+  margin: 30px 0;
+  border: solid 1px #efefef;
+  padding: 5px;
+
+  th, td {
+    padding: 5px;
+  }
+
+  th {
+    text-align: left;
+  }
+}
+
+.actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  &>li {
+    display: inline-block;
+    margin-right: 15px;
+  }
+}
+</style>
+
 <template>
   <div>
     <h1>{{ contact.first_name }} {{ contact.last_name }}</h1>
 
-    <div class="actions">
-      <a href="" @click.prevent="deleteContact">Delete</a>
-      <router-link :to="'/contacts/'+ contact.id +'/edit'">Edit</router-link>
-    </div>
+    <ul class="actions">
+      <li>
+        <router-link :to="'/contacts/'+ contact.id +'/edit'">Edit</router-link>
+      </li>
+      <li>
+        <a href="" @click.prevent="deleteContact">Delete</a>
+      </li>
+    </ul>
 
-    <p>
-      <strong>Email</strong>
-      {{ contact.email }}
-    </p>
-    <p>
-      <strong>Telephone</strong>
-      {{ contact.phone }}
-    </p>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Contact information</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>Email</th>
+        <td>{{ contact.email }}</td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td>{{ contact.phone }}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
-const Vue = require("vue");
 const api = require("helpers/api");
 const bus = require("helpers/bus");
 
-module.exports = Vue.extend({
+module.exports = {
   data() {
     return {
       contact: {},
@@ -61,5 +97,5 @@ module.exports = Vue.extend({
       }
     }
   },
-});
+};
 </script>

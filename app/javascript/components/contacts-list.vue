@@ -4,7 +4,7 @@
       <li class="header"><strong>{{ contacts.length }} Contacts</strong></li>
       <li v-for="contact in contacts">
         <router-link :to="'/contacts/'+ contact.id" :exact="true">
-          {{ contact.first_name }} {{ contact.last_name }}
+          <strong>{{ contact.last_name }}</strong>, {{ contact.first_name }}
         </router-link>
       </li>
     </ul>
@@ -12,9 +12,7 @@
 </template>
 
 <script>
-const Vue = require("vue");
-
-module.exports = Vue.extend({
+module.exports = {
   props: {
     contacts: {
       type: Array,
@@ -24,5 +22,5 @@ module.exports = Vue.extend({
 
   methods: {
   },
-});
+};
 </script>

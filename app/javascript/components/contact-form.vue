@@ -30,11 +30,10 @@
 </template>
 
 <script>
-const Vue = require("vue");
 const api = require("helpers/api");
 const bus = require("helpers/bus");
 
-module.exports = Vue.extend({
+module.exports = {
   data() {
     return {
       id: null,
@@ -123,5 +122,5 @@ module.exports = Vue.extend({
       });
     }
   },
-});
+};
 </script>

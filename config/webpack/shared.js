@@ -26,11 +26,10 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            js: 'babel-loader?presets[]=es2015',
-            css: 'style-loader!css-loader!sass-loader?sourceMap' // 'style-loader!css-loader!postcss-loader!sass-loader?sourceMap'
+            js: 'babel-loader?{"cacheDirectory":true,"presets":[["es2015",{"modules":false}]]}',
+            css: 'vue-style-loader!css-loader!sass-loader?sourceMap'
           },
-          // postcss: [require('autoprefixer')()],
-          // autoprefixer: false
+          postcss: [require('autoprefixer')],
         }
       },
       { test: /\.html$/, loader: 'vue-html-loader' },

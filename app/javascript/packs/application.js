@@ -21,4 +21,10 @@ const router = new VueRouter({
   routes // short for routes: routes
 });
 
-new App({ router }).$mount("#app");
+new Vue({
+  router,
+
+  components: {
+    "app": App,
+  }
+}).$mount("#app");

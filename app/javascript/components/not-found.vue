@@ -5,8 +5,5 @@
 </template>
 
 <script>
-const Vue = require("vue");
-
-module.exports = Vue.extend({
-});
+module.exports = {};
 </script>
