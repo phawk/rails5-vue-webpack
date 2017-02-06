@@ -53,9 +53,7 @@ module.exports = Vue.extend({
     deleteContact() {
       if (window.confirm("Are you sure?")) {
         contacts.delete({ id: this.contact.id }).then((resp) => {
-          console.log("contact deleted");
           bus.$emit("contact-deleted", this.contact);
-
           this.$router.push('/');
         }, (resp) => {
           console.error("Error getting contact", resp);

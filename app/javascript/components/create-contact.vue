@@ -40,6 +40,13 @@ module.exports = Vue.extend({
 
       contacts.save(params).then((resp) => {
         bus.$emit("contact-created", resp.data);
+
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.phone = "";
+
+        this.$router.push('/contacts/'+ resp.data.id);
       }, (resp) => {
         console.error("Failed to create contact", resp);
         this.errorMsg = resp.body.join(", ");
