@@ -13,12 +13,8 @@ module.exports = merge(config, {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor']
-    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      sourcemap: true,
       compressor: {
         warnings: false
       }

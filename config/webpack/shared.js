@@ -3,6 +3,7 @@
 var path = require('path')
 var glob = require('glob')
 var extname = require('path-complete-extname')
+var webpack = require('webpack')
 
 module.exports = {
   entry: glob.sync(path.join('..', 'app', 'javascript', 'packs', '*.js*')).reduce(
@@ -56,7 +57,11 @@ module.exports = {
     ]
   },
 
-  plugins: [],
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor']
+    }),
+  ],
 
   resolve: {
     extensions: [ '.js', '.coffee', '.html' ],
