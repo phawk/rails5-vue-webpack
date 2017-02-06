@@ -17,7 +17,19 @@ module.exports = {
 
   module: {
     rules: [
-      { test: /\.vue$/, loader: 'vue-loader' },
+      {
+        test: /\.vue$/,
+        exclude: /node_modules/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            js: 'babel-loader?presets[]=es2015',
+            css: 'style-loader!css-loader!sass-loader?sourceMap' // 'style-loader!css-loader!postcss-loader!sass-loader?sourceMap'
+          },
+          // postcss: [require('autoprefixer')()],
+          // autoprefixer: false
+        }
+      },
       { test: /\.html$/, loader: 'vue-html-loader' },
       { test: /\.coffee(.erb)?$/, loader: "coffee-loader" },
       {

@@ -70,3 +70,14 @@ module.exports = Vue.extend({
   },
 });
 </script>
+
+<style>
+body {
+  $font-stack: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+  margin: 0;
+  font-family: $font-stack;
+}
+</style>
