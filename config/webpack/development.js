@@ -22,6 +22,9 @@ module.exports = merge(config, {
     new webpack.LoaderOptionsPlugin({
       debug: true
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor']
+    }),
     new webpack.NamedModulesPlugin(),
   ]
 })

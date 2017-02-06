@@ -10,7 +10,9 @@ module.exports = {
       var basename = path.basename(entry, extname(entry))
       map[basename] = entry
       return map
-    }, {}
+    }, {
+      vendor: ['vue', 'axios']
+    }
   ),
 
   output: { filename: '[name].js', path: path.resolve('..', 'public', 'packs') },
