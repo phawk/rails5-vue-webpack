@@ -30,24 +30,33 @@ module.exports = Vue.extend({
     };
   },
 
-  created() {
-    const id = this.$route.params.id;
+  watch: {
+    // call again the method if the route changes
+    '$route': 'fetchData'
+  },
 
-    if (id) {
-      // Load contact to edit
-      contacts.get({ id: id }).then((resp) => {
-        this.id = resp.data.id;
-        this.firstName = resp.data.first_name;
-        this.lastName = resp.data.last_name;
-        this.email = resp.data.email;
-        this.phone = resp.data.phone;
-      }, (resp) => {
-        console.error("Error fetching contact");
-      });
-    }
+  created() {
+    this.fetchData();
   },
 
   methods: {
+    fetchData() {
+      const id = this.$route.params.id;
+
+      if (id) {
+        // Load contact to edit
+        contacts.get({ id: id }).then((resp) => {
+          this.id = resp.data.id;
+          this.firstName = resp.data.first_name;
+          this.lastName = resp.data.last_name;
+          this.email = resp.data.email;
+          this.phone = resp.data.phone;
+        }, (resp) => {
+          console.error("Error fetching contact");
+        });
+      }
+    },
+
     resetForm() {
       this.firstName = "";
       this.lastName = "";
