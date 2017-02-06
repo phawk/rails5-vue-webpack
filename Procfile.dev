@@ -1,2 +1,2 @@
 web: bin/rails server
-webpack: bin/webpack-dev-server --inline --hot
+webpack: bin/webpack-dev-server --inline --hot --port 8080

@@ -20,7 +20,7 @@
 
 <script>
 const Vue = require("vue");
-const contacts = require("helpers/resources").contacts;
+const api = require("helpers/api");
 const bus = require("helpers/bus");
 
 module.exports = Vue.extend({
@@ -43,7 +43,7 @@ module.exports = Vue.extend({
     fetchData() {
       var id = this.$route.params.id;
 
-      contacts.get({ id: id }).then((resp) => {
+      api.get("contacts/"+ id).then((resp) => {
         this.contact = resp.data;
       }, (resp) => {
         console.error("Error getting contact", resp);
@@ -52,7 +52,7 @@ module.exports = Vue.extend({
 
     deleteContact() {
       if (window.confirm("Are you sure?")) {
-        contacts.delete({ id: this.contact.id }).then((resp) => {
+        api.delete("contacts/"+ this.contact.id).then((resp) => {
           bus.$emit("contact-deleted", this.contact);
           this.$router.push('/');
         }, (resp) => {

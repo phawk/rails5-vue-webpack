@@ -13,7 +13,6 @@
 
 <script>
 const Vue = require("vue");
-const contacts = require("helpers/resources").contacts;
 
 module.exports = Vue.extend({
   props: {

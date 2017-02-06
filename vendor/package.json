@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "autoprefixer": "^6.7.2",
+    "axios": "^0.15.3",
     "css-loader": "^0.26.1",
     "dotenv": "^4.0.0",
     "node-sass": "^4.5.0",
@@ -25,7 +26,6 @@
     "vue": "^2.1.10",
     "vue-html-loader": "^1.2.3",
     "vue-loader": "^10.3.0",
-    "vue-resource": "^1.2.0",
     "vue-router": "^2.2.0",
     "vue-template-compiler": "^2.1.10"
   }

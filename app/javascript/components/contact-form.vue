@@ -1,9 +1,25 @@
+<style scoped>
+  $font-stack: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+  form input[type="text"],
+  form input[type="email"] {
+    display: block;
+    font-family: $font-stack;
+    font-size: 1em;
+    padding: 6px 8px;
+    border: solid 1px #d7d7d7;
+    border-radius: 2px;
+  }
+</style>
+
 <template>
   <div>
     <form @submit.prevent="createOrUpdate">
       <input type="text" v-model="firstName" placeholder="First name">
       <input type="text" v-model="lastName" placeholder="Last name">
-      <input type="text" v-model="email" placeholder="Email">
+      <input type="email" v-model="email" placeholder="Email">
       <input type="text" v-model="phone" placeholder="Phone">
 
       <input type="submit" value="Save">
@@ -15,7 +31,7 @@
 
 <script>
 const Vue = require("vue");
-const contacts = require("helpers/resources").contacts;
+const api = require("helpers/api");
 const bus = require("helpers/bus");
 
 module.exports = Vue.extend({
@@ -45,7 +61,7 @@ module.exports = Vue.extend({
 
       if (id) {
         // Load contact to edit
-        contacts.get({ id: id }).then((resp) => {
+        api.get("contacts/"+ id).then((resp) => {
           this.id = resp.data.id;
           this.firstName = resp.data.first_name;
           this.lastName = resp.data.last_name;
@@ -82,7 +98,7 @@ module.exports = Vue.extend({
     },
 
     create() {
-      contacts.save(this.getParams()).then((resp) => {
+      api.post("contacts", this.getParams()).then((resp) => {
         bus.$emit("contact-created", resp.data);
 
         this.resetForm();
@@ -95,7 +111,7 @@ module.exports = Vue.extend({
     },
 
     update() {
-      contacts.update({ id: this.id }, this.getParams()).then((resp) => {
+      api.patch("contacts/"+ this.id, this.getParams()).then((resp) => {
         bus.$emit("contact-updated", resp.data);
 
         this.resetForm();

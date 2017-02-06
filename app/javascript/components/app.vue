@@ -1,7 +1,12 @@
 <template>
   <div>
-    <div class="header">
-      <router-link to="/contacts/new">+ Create new</router-link>
+    <div class="main-header">
+      <h1>Contacts</h1>
+      <ul class="nav">
+        <li>
+          <router-link to="/contacts/new">+ Create new</router-link>
+        </li>
+      </ul>
     </div>
 
     <div class="sidebar">
@@ -16,7 +21,7 @@
 const _ = require("underscore");
 const Vue = require("vue");
 const ContactsList = require("components/contacts-list.vue");
-const contacts = require("helpers/resources").contacts;
+const api = require("helpers/api");
 const bus = require("helpers/bus");
 
 module.exports = Vue.extend({
@@ -31,7 +36,7 @@ module.exports = Vue.extend({
   },
 
   created() {
-    contacts.get().then((resp) => {
+    api.get("contacts").then((resp) => {
       this.contacts = resp.data;
       this.sortContacts();
     }, (resp) => {
@@ -64,7 +69,6 @@ module.exports = Vue.extend({
 
   methods: {
     sortContacts() {
-      console.log("Sort contacts");
       this.contacts = _.sortBy(this.contacts, function(contact) { return contact.last_name; });
     },
   },
@@ -80,4 +84,19 @@ body {
   margin: 0;
   font-family: $font-stack;
 }
+
+.main-header {
+  background-color: #f9f9f9;
+  border-bottom: solid 1px #d7d7d7;
+  padding: 20px 30px;
+
+  h1 {
+    font-size: 1em;
+  }
+  .nav {
+    float: right;
+    text-align: right;
+  }
+}
+
 </style>
