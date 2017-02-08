@@ -72,7 +72,6 @@ module.exports = {
       'components': path.resolve(__dirname, '../../app/javascript/components'),
       'helpers': path.resolve(__dirname, '../../app/javascript/helpers'),
       'vue$': 'vue/dist/vue.common.js',
-      'resources$': path.resolve(__dirname, '../../app/javascript/helpers/resources.js'),
     }
   },
 
